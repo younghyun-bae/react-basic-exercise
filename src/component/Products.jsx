@@ -33,7 +33,7 @@ export default function Products() {
               <h3>{product.name}</h3>
               <p>{product.price}</p>
             </article>
-          </li>
+          </li> // map으로 자식요소 반환해줄 때 고유 key가 필요
         ))}
       </ul>
     </>
