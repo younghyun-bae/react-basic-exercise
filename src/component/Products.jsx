@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from 'react';
 
 export default function Products() {
-  const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
+  const [checked, setChecked] = useState(false);
+  const handleChange = () => setChecked((prev) => !prev);
 
   useEffect(() => {
-    fetch('data/products.json')
+    fetch(`data/${checked ? 'sale_' : ''}products.json`)
       .then((res) => res.json())
       .then((data) => {
         console.log('🔥 received a data from the network');
         setProducts(data);
       });
     return () => {
-      console.log('🧹 clean up')
+      console.log('🧹 cleaned up')
     }
-  }, []) // 한 번만 useEffect 실행시키기 위해 텅 빈 배열 두 번째 인자에 전달
+  }, [checked]) // 한 번만 useEffect 실행시키기 위해 텅 빈 배열 두 번째 인자에 전달
 
   return (
     <>
+      <input 
+        id='checkbox'
+        type='checkbox'
+        value={checked}
+        onChange={handleChange}
+      />
+      <label htmlFor='checkbox'>Show Only 🔥 Sale</label>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -28,7 +36,6 @@ export default function Products() {
           </li>
         ))}
       </ul>
-      <button onClick={() => setCount((prev) => prev + 1)}>{count}</button>
     </>
   );
 }
