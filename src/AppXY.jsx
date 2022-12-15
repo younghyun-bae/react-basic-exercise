@@ -4,21 +4,24 @@ import './AppXY.css';
 
 export default function AppXY() {
 
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  const [position, setPosition] = useState({ x: 0, y: 0, z: 0 })
 
   return (
     <div 
       className='container' 
       onPointerMove={(e)=>{
-        console.log(e.clientX, e.clientY);
-        setX(e.clientX);
-        setY(e.clientY);
+        // 1. mouse pointer
+        // setPosition({ x: e.clientX, y: e.clientY });
+        // 2. 수평으로만 이동 가능하게?
+        // setPosition((prev) => ({ x: e.clientX, y: prev.y }));
+        // 3. 여러 객체 값을 압축해서 쓰기? spread syntax
+        setPosition((prev) => ({ ...prev, x: e.clientX }));
+        // prev: 이전 좌표 값을 의미
       }}
     >
       <div
         className='pointer'
-        style={{ transform: `translate(${x}px, ${y}px)`}}
+        style={{ transform: `translate(${position.x}px, ${position.y}px)`}}
       />
     </div>
   );
