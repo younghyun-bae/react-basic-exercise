@@ -1,38 +1,24 @@
 import React from 'react';
-import { useState } from 'react';
+import { useReducer } from 'react';
+import personReducer from './reducer/person-reducer';
 
 export default function AppMentor() {
-  const [person, setPerson] = useState(initialPerson);
-  
+  // const [person, setPerson] = useState(initialPerson);
+  const [person, dispatch] = useReducer(personReducer, initialPerson);
+
   const handleUpdate = () => {
     const prev = prompt(`Whose name would you like to change?`);
     const current = prompt(`What is the name you would like to change?`);
-
-    setPerson(person => ({
-      ...person, 
-      mentors: person.mentors.map((mentor => {
-        if(mentor.name === prev) {
-          return {...mentor, name: current};
-        }
-        return mentor;
-      })),
-    }));
+    dispatch({ type: 'updated', prev, current });
   };
   const handleAdd = () => {
     const name = prompt(`What's the name of a mentor?`);
     const title = prompt(`What's the position of a mentor?`)
-    setPerson(person => ({
-      ...person, 
-      mentors: [...person.mentors, { name, title }],
-      // [{ name, title }, ...person.mentors] 배열 맨 앞에 추가
-    }));
+    dispatch({ type: 'added', name, title });
   };
   const hadnleDelete = () => {
     const name = prompt(`Whose name would you like to delete?`);
-    setPerson(person => ({
-      ...person, 
-      mentors: person.mentors.filter((m) => m.name !== name),
-    }));
+    dispatch({ type: 'deleted', name });
   };
 
 
