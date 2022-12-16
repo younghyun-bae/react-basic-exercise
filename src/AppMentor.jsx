@@ -5,7 +5,8 @@ export default function AppMentor() {
   const [person, setPerson] = useState({
     name: 'Younghyun',
     title: 'Developer',
-    mentor: {
+    mentor:
+    {
       name: 'Christopher',
       title: 'Senior Developer',
     },
@@ -22,7 +23,7 @@ export default function AppMentor() {
       <button
         onClick={() => {
           const name = prompt(`what's your mentor's name?`);
-          setPerson(person => ({...person, mentor: {...person.mentor, name } }))
+          setPerson(person => ({...person, mentor: [...person.mentor, name] }));
         }}
       >
         change the name of a mentor
