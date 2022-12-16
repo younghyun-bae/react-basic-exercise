@@ -1,6 +1,6 @@
 import React from 'react';
 import { useReducer } from 'react';
-import personReducer from './reducer/person-reducer';
+import personReducer from '../reducer/person-reducer';
 
 export default function AppMentor() {
   // const [person, setPerson] = useState(initialPerson);
