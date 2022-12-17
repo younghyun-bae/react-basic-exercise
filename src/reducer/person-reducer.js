@@ -2,7 +2,7 @@ export default function personReducer(person, action) {
   switch (action.type) {
     case 'updated': {
       const {prev, current} = action;
-      // = object deconstructing
+      // = object destructuring
       // const prev = action.prev;
       // const current = action.current;
       return {
