@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMemo } from 'react';
 import { useReducer } from 'react';
 import personReducer from '../reducer/person-reducer';
 
@@ -42,7 +43,7 @@ export default function AppMentorsButton() {
 
 function Button({ text, onClick }) {
   console.log('Button', text, 're-rendering...')
-  const result = calculateSomething();
+  const result = useMemo(() => calculateSomething(), []);
   return (
     <button
       onClick={onClick}
