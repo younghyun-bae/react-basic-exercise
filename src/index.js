@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import AppProducts from './basics/AppProducts.jsx';
+import AppClass from './component/AppClass.jsx';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppProducts />
+    <AppClass />
   </React.StrictMode>
 );
 
