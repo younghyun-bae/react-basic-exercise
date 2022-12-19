@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import AppTheme from './component/AppTheme';
+import AppMentorsButton from './component/AppMentorsButton';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppTheme />
+    <AppMentorsButton />
   </React.StrictMode>
 );
 

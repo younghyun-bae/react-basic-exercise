@@ -2,8 +2,7 @@ import React from 'react';
 import { useReducer } from 'react';
 import personReducer from '../reducer/person-reducer';
 
-export default function AppMentors() {
-  // const [person, setPerson] = useState(initialPerson);
+export default function AppMentorsButton() {
   const [person, dispatch] = useReducer(personReducer, initialPerson);
 
   const handleUpdate = () => {
@@ -34,17 +33,28 @@ export default function AppMentors() {
           </li>
         ))}
       </ul>
-      <button onClick={handleUpdate}>
-        change the name of a mentor
-      </button>
-      <button onClick={handleAdd}>
-        add a mentor
-      </button>
-      <button onClick={hadnleDelete}>
-        delete a mentor
-      </button>
+      <Button text='change the name of a mentor' onClick={handleUpdate} />
+      <Button text='add a mentor' onClick={handleAdd} />
+      <Button text='delete a mentor' onClick={hadnleDelete} />
     </div>
   );
+}
+
+function Button({ text, onClick }) {
+  console.log('Button', text, 're-rendering...')
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        backgroundColor: 'black',
+        color: 'white',
+        borderRadius: '20px',
+        margin: '0.4rem',
+      }}
+    >
+      {text}
+    </button>
+  )
 }
 
 const initialPerson = {
